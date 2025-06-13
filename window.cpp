@@ -3,7 +3,7 @@
 #include <QProcess>
 #include <QStringList>
 // This is crucial: undefine the 'signals' macro after Qt headers
-// but *before* any GTK/GLib headers that might use 'signals' as a struct member.
+// but BEFORE any GTK/GLib headers that might use 'signals' as a struct member.
 #ifdef signals
 #undef signals
 #endif
