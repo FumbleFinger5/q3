@@ -5,7 +5,7 @@
             "includePath": [
                 "${workspaceFolder}/**",
                 "/usr/include",
-                // Existing GTK/GLib paths (if still needed, though your program is Qt-based)
+                // Existing GTK/GLib paths (IF still needed, though your program is Qt-based)
                 "/usr/include/gtk-3.0",
                 "/usr/include/glib-2.0",
                 "/usr/lib/x86_64-linux-gnu/glib-2.0/include",
