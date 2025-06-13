@@ -348,7 +348,6 @@ if (imno!=0) visit_imdb_webpage(imno);
 static char* movie_title(char *s, OMZ *e)
 {return(strfmt(s,"%s (%04d)", e->title, e->year));}
 
-//    mb.setStyleSheet(str);  // https://stackoverflow.com/questions/37668820/how-can-i-resize-qmessagebox
 void Window::whereIs()
 {
 OMZ e;
