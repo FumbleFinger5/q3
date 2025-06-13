@@ -1,0 +1,80 @@
+{
+    "configurations": [
+        {
+            "name": "Linux",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "/usr/include",
+                // Existing GTK/GLib paths (if still needed, though your program is Qt-based)
+                "/usr/include/gtk-3.0",
+                "/usr/include/glib-2.0",
+                "/usr/lib/x86_64-linux-gnu/glib-2.0/include",
+                "${workspaceFolder}/../plib",
+
+                // *** ADD THESE QT5 INCLUDE PATHS ***
+                "/usr/include/x86_64-linux-gnu/qt5",
+                "/usr/include/x86_64-linux-gnu/qt5/QtWidgets",
+                "/usr/include/x86_64-linux-gnu/qt5/QtGui",
+                "/usr/include/x86_64-linux-gnu/qt5/QtCore",
+                // You might also need the mkspecs path for some Qt internal headers,
+                // though usually the above are sufficient for common includes.
+                "/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++",
+                // Consider adding specific Qt module paths if you encounter more errors
+                // e.g., for QtNetwork, QtSql, etc.
+                // "/usr/include/x86_64-linux-gnu/qt5/QtNetwork",
+
+                // *** Also add these common GTK/GLib related headers that pkg-config would provide ***
+                // You already have some, but let's ensure full coverage if GTK-related includes are used
+                "/usr/include/pango-1.0",
+                "/usr/include/harfbuzz",
+                "/usr/include/freetype2",
+                "/usr/include/libpng16",
+                // ... (other paths from your `compilerArgs` that are relevant for includes)
+                // It's often easier to let pkg-config manage this for includes too if possible,
+                // but direct paths are fine for IntelliSense.
+                // For example, you can get all cflags from pkg-config for Qt and GTK and add them
+                // "compilerArgs": [
+                //     `${pkg-config --cflags Qt5Widgets Qt5Gui Qt5Core gtk+-3.0}`
+                // ]
+                // However, directly listing them in `includePath` is common for simpler setups.
+                "/usr/include/libmount", // from your makefile's pkg-config --cflags output
+                "/usr/include/blkid", // from your makefile's pkg-config --cflags output
+                "/usr/include/fribidi", // from your makefile's pkg-config --cflags output
+                "/usr/include/cairo", // from your makefile's pkg-config --cflags output
+                "/usr/include/pixman-1", // from your makefile's pkg-config --cflags output
+                "/usr/include/gdk-pixbuf-2.0", // from your makefile's pkg-config --cflags output
+                "/usr/include/x86_64-linux-gnu", // from your makefile's pkg-config --cflags output
+                "/usr/include/webp", // from your makefile's pkg-config --cflags output
+                "/usr/include/gio-unix-2.0", // from your makefile's pkg-config --cflags output
+                "/usr/include/atk-1.0", // from your makefile's pkg-config --cflags output
+                "/usr/include/at-spi2-atk/2.0", // from your makefile's pkg-config --cflags output
+                "/usr/include/at-spi-2.0", // from your makefile's pkg-config --cflags output
+                "/usr/include/dbus-1.0", // from your makefile's pkg-config --cflags output
+                "/usr/lib/x86_64-linux-gnu/dbus-1.0/include", // from your makefile's pkg-config --cflags output
+                "/usr/include/glib-2.0", // from your makefile's pkg-config --cflags output
+                "/usr/lib/x86_64-linux-gnu/glib-2.0/include" // from your makefile's pkg-config --cflags output
+
+            ],
+            "defines": [
+                // Ensure these match your makefile's DEFINES
+                // especially -DQT_WIDGETS_LIB, -DQT_GUI_LIB, -DQT_CORE_LIB, -DDEBUG
+                "QT_WIDGETS_LIB",
+                "QT_GUI_LIB",
+                "QT_CORE_LIB",
+                "DEBUG", // Or QT_NO_DEBUG if you use 'make r=1'
+                "_REENTRANT", // from CXXFLAGS
+                "signals" // This might be needed if you undef it, or if it's a conflict
+                           // but it's usually handled by compiler flags/includes before moc
+            ],
+            "compilerPath": "/usr/bin/g++",
+            "cStandard": "gnu17",
+            "cppStandard": "gnu++17",
+            "intelliSenseMode": "linux-gcc-x64"
+            // You don't usually need to duplicate all compilerArgs here unless they are critical
+            // for IntelliSense's understanding of the code, not just for compilation paths.
+            // However, listing them here explicitly doesn't hurt.
+            // "compilerArgs": [ /* ... your existing compilerArgs ... */ ]
+        }
+    ],
+    "version": 4
+}
